@@ -1,6 +1,6 @@
 {
-    "city": "string", //URL? 
-    "vehicleType": "integer", //URL? 
+    "city": "string",
+    "vehicleType": "integer",
     "properties":
     {
         "lastUpdate": "timestamp",
