@@ -1,0 +1,14 @@
+{
+    "city": "string", //URL? 
+    "vehicleType": "integer", //URL? 
+    "properties":
+    {
+        "lastUpdate": "timestamp",
+        "sideNumber": "integer",
+        "daley": "timestamp",
+        "longitude": "float",
+        "latitude": "float",
+        "route": "string",
+        "lineNumber": "integer"
+    }
+}
