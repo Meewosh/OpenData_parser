@@ -52,8 +52,8 @@ paths:
           name: lineNumber
           description: vehicle line number
           schema:
-            type: integer
-            format: int32
+            type: string
+            format: utf-8
         - in: query
           name: limit
           description: max number of records to return
