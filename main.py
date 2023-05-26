@@ -7,6 +7,8 @@ from swagger_ui import flask_api_doc
 import socket
 
 app = Flask(__name__)
+app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
+flask_api_doc(app, config_path='./conf/swagger.yaml', url_prefix='/api/doc', title='API doc')
 
 PYTHONIOENCODING="UTF-8"
 
@@ -20,7 +22,7 @@ def hello_world():
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 @app.route("/data", methods=["GET"])
-def print_data():
+def apiData():
     with open("data_struct.json", "r") as json_file:
         json_object = json.load(json_file)
     
@@ -32,7 +34,7 @@ def print_data():
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 @app.route("/warszawa", methods=["GET"])
-def apiWarsawAllType():
+def apiWarsaw():
     limit = request.args.get('limit')
     lineNumber = request.args.get('lineNumber')
     type = request.args.get('type')
@@ -45,7 +47,7 @@ def apiWarsawAllType():
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 @app.route("/wroclaw", methods=["GET"])
-def print_wroclaw():
+def apiWroclaw():
     limit = request.args.get('limit')
     lineNumber = request.args.get('lineNumber')
     json = parser_Wroclaw.dataParser(limit, lineNumber)
@@ -57,7 +59,7 @@ def print_wroclaw():
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 @app.route("/gdansk", methods=["GET"])
-def apiGdanskGetAll():
+def apiGdansk():
     limit = request.args.get('limit')
     lineNumber = request.args.get('lineNumber')
     json = parser_Gdansk.dataParser(limit, lineNumber)
@@ -65,7 +67,5 @@ def apiGdanskGetAll():
 
 
 if __name__=='__main__':
-    app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
-    flask_api_doc(app, config_path='./conf/swagger.yaml', url_prefix='/api/doc', title='API doc')
     app.run(host='0.0.0.0', port=5000, debug=True)
     

@@ -31,6 +31,7 @@ def dataParser(limit, lineNumber):
     keys = ['Data_Aktualizacji', 'Nazwa_Linii', 'Nr_Boczny', 'Ostatnia_Pozycja_Szerokosc', 'Ostatnia_Pozycja_Dlugosc']
     records = {}
     iterator = 0
+    iterator_tmp = 0
     offset = 0
     response = response_get(offset)
     totalAmountOfRecordBeforePrase = response['result']['total']
@@ -39,7 +40,11 @@ def dataParser(limit, lineNumber):
         record = response_parse(response, iterator, keys, recordNumber)
         
         if lineNumber == None or record[recordNumber]['lineNumber'] == lineNumber:
-            records.update(record)
+            record_tmp = {}
+            record_tmp[iterator_tmp] = record[recordNumber]
+            records.update(record_tmp)
+            iterator_tmp = iterator_tmp + 1
+            
         iterator = iterator + 1
 
         if limit != None:
@@ -48,6 +53,6 @@ def dataParser(limit, lineNumber):
 
         if (iterator) == 100:  
             iterator = 0
-            offset_value_change(offset, iterator)
+            response = offset_value_change(offset)
   
     return records

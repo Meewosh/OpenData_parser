@@ -1,8 +1,8 @@
 openapi: 3.0.0
 info:
   version: "1.0.0"
-  title: Open Data API for Polish Cities
-  description: The API for the EatBacon IOT project
+  title: Open Data API
+  description: The API contains unified data structures for LIVE assets of public transport in Poland
 paths:
   /gdansk:
     get:
@@ -46,7 +46,8 @@ paths:
           description: type of vehicle bus(1), tram(2)
           schema:
             type: integer
-            format: int32      
+            format: int32    
+          required: true  
         - in: query
           name: lineNumber
           description: vehicle line number
@@ -77,12 +78,12 @@ paths:
       description: returns all registered vehicles with GPS coordinates
       operationId: getWrocław
       parameters:
-        # - in: query
-        #   name: lineNumber
-        #   description: vehicle line number
-        #   schema:
-        #     type: integer
-        #     format: int32
+        - in: query
+          name: lineNumber
+          description: vehicle line number
+          schema:
+            type: integer
+            format: int32
         - in: query
           name: limit
           description: max number of records to return
