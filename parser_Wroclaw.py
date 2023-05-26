@@ -34,7 +34,6 @@ def ifChangeNumberOfRecord(record, records, recordNumber, iterator_tmp, lineNumb
         record_tmp = {}
         record_tmp[iterator_tmp] = record[recordNumber]
         records.update(record_tmp)
-        iterator_tmp = iterator_tmp + 1
 
 
 def dataParser(limit, lineNumber):
@@ -51,6 +50,7 @@ def dataParser(limit, lineNumber):
         
         if lineNumber == None or record[recordNumber]['lineNumber'] == lineNumber:
             ifChangeNumberOfRecord(record, records, recordNumber, iterator_tmp, lineNumber)
+            iterator_tmp = iterator_tmp + 1
             
         iterator = iterator + 1
 
