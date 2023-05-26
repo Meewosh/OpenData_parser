@@ -1,0 +1,102 @@
+openapi: 3.0.0
+info:
+  version: "1.0.0"
+  title: Open Data API for Polish Cities
+  description: The API for the EatBacon IOT project
+paths:
+  /gdansk:
+    get:
+      tags:
+        - Gdańsk 
+      description: returns all registered vehicles with GPS coordinates
+      operationId: getGdansk
+      parameters:
+        - in: query
+          name: lineNumber
+          description: vehicle line number
+          schema:
+            type: integer
+            format: int32
+        - in: query
+          name: limit
+          description: max number of records to return
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: All the something
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+                  format: uri
+                  example: 'http://10.0.0.225:8080'
+  /warszawa:
+    get:
+      tags:
+        - Warszawa 
+      description: returns all registered vehicles with GPS coordinates
+      operationId: getWarszawa 
+      parameters:
+        - in: query
+          name: type
+          description: type of vehicle bus(1), tram(2)
+          schema:
+            type: integer
+            format: int32      
+        - in: query
+          name: lineNumber
+          description: vehicle line number
+          schema:
+            type: integer
+            format: int32
+        - in: query
+          name: limit
+          description: max number of records to return
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: All the something
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+                  format: uri
+                  example: 'http://10.0.0.225:8080'   
+  /wroclaw:
+    get:
+      tags:
+        - Wrocław 
+      description: returns all registered vehicles with GPS coordinates
+      operationId: getWrocław
+      parameters:
+        # - in: query
+        #   name: lineNumber
+        #   description: vehicle line number
+        #   schema:
+        #     type: integer
+        #     format: int32
+        - in: query
+          name: limit
+          description: max number of records to return
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: All the something
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+                  format: uri
+                  example: 'http://10.0.0.225:8080'               
