@@ -14,7 +14,10 @@ PYTHONIOENCODING="UTF-8"
 
 @app.route("/")
 def hello_world():
-    return redirect("http://62.21.49.198:5000/api/doc", code = 302)
+    if __name__=='__main__':
+        return redirect("http://192.168.0.11:8000/api/doc", code = 302)
+    else:
+        return redirect("http://62.21.49.198:5000/api/doc", code = 302)
 
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -67,5 +70,5 @@ def apiGdansk():
 
 
 if __name__=='__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    app.run(host='0.0.0.0', port=8000, debug=True)
     
