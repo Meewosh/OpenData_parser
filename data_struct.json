@@ -1,14 +1,9 @@
 {
-    "city": "string",
-    "vehicleType": "integer",
-    "properties":
-    {
-        "lastUpdate": "timestamp",
-        "sideNumber": "integer",
-        "daley": "timestamp",
-        "longitude": "float",
-        "latitude": "float",
-        "route": "string",
-        "lineNumber": "integer"
-    }
+    "lastUpdate": "timestamp",
+    "lineNumber": "integer",
+    "sideNumber": "integer",
+    "route": "string",
+    "delay": "timestamp",
+    "longitude": "float",
+    "latitude": "float"
 }
