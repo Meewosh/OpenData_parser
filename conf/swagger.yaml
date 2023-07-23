@@ -101,3 +101,70 @@ paths:
                   type: string
                   format: uri
                   example: 'http://10.0.0.225:8080'               
+  /krakow:
+    get:
+      tags:
+        - Kraków 
+      description: returns all registered vehicles with GPS coordinates
+      operationId: getKrakow
+      parameters:
+        - in: query
+          name: type
+          description: type of vehicle bus(1), tram(2)
+          schema:
+            type: integer
+            format: int32
+          required: true  
+        - in: query
+          name: line_number
+          description: vehicle line number
+          schema:
+            type: integer
+            format: int32
+        - in: query
+          name: limit
+          description: max number of records to return
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: All the something
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+                  format: uri
+                  example: 'http://10.0.0.225:8080'               
+  /poznan:
+    get:
+      tags:
+        - Poznań 
+      description: returns all registered vehicles with GPS coordinates
+      operationId: getPoznan
+      parameters:
+        - in: query
+          name: line_number
+          description: vehicle line number
+          schema:
+            type: integer
+            format: int32
+        - in: query
+          name: limit
+          description: max number of records to return
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: All the something
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+                  format: uri
+                  example: 'http://10.0.0.225:8080'    
