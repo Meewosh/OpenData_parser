@@ -1,0 +1,22 @@
+entity {
+  id: "9999"
+  vehicle {
+    trip {
+      trip_id: "block_930_trip_21_service_3"
+    }
+    vehicle {
+      id: "9999"
+      label: "9999"
+      license_plate: "9999"
+    }
+    position {
+      latitude: 50.0183
+      longitude: 20.0334721
+      bearing: 270
+    }
+    current_stop_sequence: 5
+    stop_id: "stop_473_66501"
+    current_status: STOPPED_AT
+    timestamp: 1690125728
+  }
+}
