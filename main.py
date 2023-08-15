@@ -78,7 +78,7 @@ def api_krakow():
     limit = request.args.get('limit')
     line_number = request.args.get('lineNumber')
     type_number = request.args.get('type')
-    json = parser_Karkow.get_records(line_number, limit, type_number)
+    json = parser_Karkow.dataParser(line_number, limit, type_number)
     return jsonify(json)
 
 
@@ -90,7 +90,7 @@ def api_krakow():
 def api_poznan():
     limit = request.args.get('limit')
     line_number = request.args.get('lineNumber')
-    json = parser_Poznan.get_records(line_number, limit)
+    json = parser_Poznan.dataParser(line_number, limit)
     return jsonify(json)
 
 

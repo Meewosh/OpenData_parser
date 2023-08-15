@@ -66,7 +66,7 @@ def response_prase(vehicle, record_number, trips_update):
 
 
 
-def get_records(line_number, limit):
+def dataParser(line_number, limit):
     record_number = 0
     records = {}
 
