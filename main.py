@@ -1,4 +1,4 @@
-from flask import Flask, jsonify,request, redirect
+from flask import Flask, jsonify, request, redirect
 from swagger_ui import flask_api_doc
 import json
 import parser_Wroclaw
@@ -11,8 +11,8 @@ import parser_Poznan
 app = Flask(__name__)
 app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
 flask_api_doc(app, config_path='/home/meewosh/Pulpit/OpenData_parser_develop/OpenData_parser_dev/conf/swagger.yaml', url_prefix='/api/doc', title='API doc')
-
 PYTHONIOENCODING="UTF-8"
+
 
 @app.route("/")
 def redirect_uri():

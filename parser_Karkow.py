@@ -6,8 +6,6 @@ import csv
 
 def get_request(url):
     feed = gtfs_realtime_pb2.FeedMessage()
-
-
     response = requests.get(url)
     feed.ParseFromString(response.content)
     return feed
