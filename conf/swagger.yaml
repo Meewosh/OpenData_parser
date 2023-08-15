@@ -116,7 +116,7 @@ paths:
             format: int32
           required: true  
         - in: query
-          name: line_number
+          name: lineNumber
           description: vehicle line number
           schema:
             type: integer
@@ -146,7 +146,7 @@ paths:
       operationId: getPoznan
       parameters:
         - in: query
-          name: line_number
+          name: lineNumber
           description: vehicle line number
           schema:
             type: integer

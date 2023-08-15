@@ -17,7 +17,7 @@ PYTHONIOENCODING="UTF-8"
 @app.route("/")
 def redirect_uri():
     if __name__=='__main__':
-        return redirect("http://192.168.0.10:8000/api/doc", code = 302)
+        return redirect("http://192.168.0.24:8000/api/doc", code = 302)
     return redirect("http://62.21.49.198:5000/api/doc", code = 302)
 
 
@@ -39,7 +39,7 @@ def api_data():
 @app.route("/warszawa", methods=["GET"])
 def api_warszawa():
     limit = request.args.get('limit')
-    line_number = request.args.get('line_number')
+    line_number = request.args.get('lineNumber')
     type = request.args.get('type')
     json = parser_Warszawa.dataParser(type, line_number, limit)
     return jsonify(json)
@@ -52,7 +52,7 @@ def api_warszawa():
 @app.route("/wroclaw", methods=["GET"])
 def api_wroclaw():
     limit = request.args.get('limit')
-    line_number = request.args.get('line_number')
+    line_number = request.args.get('lineNumber')
     json = parser_Wroclaw.dataParser(limit, line_number)
     return jsonify(json)
 
@@ -64,7 +64,7 @@ def api_wroclaw():
 @app.route("/gdansk", methods=["GET"])
 def api_gdansk():
     limit = request.args.get('limit')
-    line_number = request.args.get('line_number')
+    line_number = request.args.get('lineNumber')
     json = parser_Gdansk.dataParser(limit, line_number)
     return jsonify(json)
 
@@ -76,7 +76,7 @@ def api_gdansk():
 @app.route("/krakow", methods=["GET"])
 def api_krakow():
     limit = request.args.get('limit')
-    line_number = request.args.get('line_number')
+    line_number = request.args.get('lineNumber')
     type_number = request.args.get('type')
     json = parser_Karkow.get_records(line_number, limit, type_number)
     return jsonify(json)
@@ -89,9 +89,10 @@ def api_krakow():
 @app.route("/poznan", methods=["GET"])
 def api_poznan():
     limit = request.args.get('limit')
-    line_number = request.args.get('line_number')
+    line_number = request.args.get('lineNumber')
     json = parser_Poznan.get_records(line_number, limit)
     return jsonify(json)
+
 
 
 if __name__=='__main__':

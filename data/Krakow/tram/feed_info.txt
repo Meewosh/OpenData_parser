@@ -1,2 +1,2 @@
 feed_publisher_name,feed_publisher_url,feed_lang,feed_start_date,feed_end_date,feed_version
-"ZTP","http://ztp.krakow.pl/",pl,,,22.07.2023 01:04
+"ZTP","http://ztp.krakow.pl/",pl,,,15.08.2023 01:03

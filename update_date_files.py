@@ -39,3 +39,9 @@ download_file(krakow_url_path_tram, krakow_data_path_tram)
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 #POZNAŃ
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+poznan_url_path_ = 'https://www.ztm.poznan.pl/pl/dla-deweloperow/getGTFSFile'
+poznan_data_path = "/home/meewosh/Pulpit/OpenData_parser_develop/OpenData_parser_dev/data/Poznan/"
+
+
+download_file(poznan_url_path_, poznan_data_path)

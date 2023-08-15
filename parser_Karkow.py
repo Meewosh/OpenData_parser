@@ -10,7 +10,6 @@ def get_request(url):
 
     response = requests.get(url)
     feed.ParseFromString(response.content)
-    #print (feed)
     return feed
 
 
@@ -39,7 +38,7 @@ def response_prase(vehicle, record_number, type_number, trips_update):
         for row in trpis_csv:
             if row["trip_id"] == vehicle.vehicle.trip.trip_id:
                 vehicle_heading = row["trip_headsign"]
-                vehicle_route_id = row["route_id"]   
+                vehicle_route_id = row["route_id"]
                 with open(pathfile_routes, newline="") as csvfile_route:
                     routes_csv = csv.DictReader(csvfile_route)     
                     for row_routes in routes_csv:
