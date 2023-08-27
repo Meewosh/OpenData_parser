@@ -2,6 +2,7 @@ from google.transit import gtfs_realtime_pb2
 from datetime import datetime
 import requests
 import csv
+import main
 
 
 def get_request(url):
@@ -18,13 +19,19 @@ def response_prase(vehicle, record_number, trips_update):
     vehicle_longitude = vehicle.vehicle.position.longitude
     vehicle_license_plate = vehicle.vehicle.vehicle.label
     vehicle_last_update = datetime.fromtimestamp(vehicle.vehicle.timestamp).strftime('%Y-%m-%d %H:%M:%S')
-    pathfile_trips = "/home/meewosh/Pulpit/OpenData_parser_develop/OpenData_parser_dev/data/Poznan/trips.txt"
-    pathfile_routes = "/home/meewosh/Pulpit/OpenData_parser_develop/OpenData_parser_dev/data/Poznan/routes.txt"
+    pathfile_trips = main.home + "/data/Poznan/trips.txt"
+    pathfile_routes = main.home + "/data/Poznan/routes.txt"
+    vehicle_delay_seconds = "None"
 
     for trip in trips_update.entity:
         if vehicle.vehicle.trip.trip_id == trip.trip_update.trip.trip_id:
-            vehicle_delay = trip.trip_update.stop_time_update[0].arrival.delay
+            vehicle_delay_seconds = trip.trip_update.stop_time_update[0].arrival.delay
             break
+        
+    if vehicle_delay_seconds != "None":
+        vehicle_delay = round(int(vehicle_delay_seconds)/60)
+    else:
+        vehicle_delay = "None"
 
     with open(pathfile_trips, newline="") as csvfile_trips:
         trpis_csv = csv.DictReader(csvfile_trips)
@@ -43,7 +50,7 @@ def response_prase(vehicle, record_number, trips_update):
                         "lastUpdate": vehicle_last_update,
                         "lineNumber": vehicle_id,
                         "sideNumber": vehicle_license_plate,
-                        "delay": round(int(vehicle_delay)/60),
+                        "delay": vehicle_delay,
                         "route": vehicle_heading,
                         "latitude": vehicle_latitude,
                         "longitude": vehicle_longitude

@@ -2,6 +2,7 @@ from google.transit import gtfs_realtime_pb2
 from datetime import datetime
 import requests
 import csv
+import main
 
 
 def get_request(url):
@@ -19,11 +20,11 @@ def response_prase(vehicle, record_number, type_number, trips_update):
     
     vehicle_last_update = datetime.fromtimestamp(vehicle.vehicle.timestamp).strftime('%Y-%m-%d %H:%M:%S')
     if type_number == '1':
-        pathfile_trips = "/home/meewosh/Pulpit/OpenData_parser_develop/OpenData_parser_dev/data/Krakow/bus/trips.txt"
-        pathfile_routes = "/home/meewosh/Pulpit/OpenData_parser_develop/OpenData_parser_dev/data/Krakow/bus/routes.txt"
+        pathfile_trips = main.home + "/data/Krakow/bus/trips.txt"
+        pathfile_routes = main.home + "/data/Krakow/bus/routes.txt"
     else:
-        pathfile_trips = "/home/meewosh/Pulpit/OpenData_parser_develop/OpenData_parser_dev/data/Krakow/tram/trips.txt"
-        pathfile_routes = "/home/meewosh/Pulpit/OpenData_parser_develop/OpenData_parser_dev/data/Krakow/tram/routes.txt"
+        pathfile_trips = main.home + "/data/Krakow/tram/trips.txt"
+        pathfile_routes = main.home + "/data/Krakow/tram/routes.txt"
 
     vehicle_delay = None
     for trip in trips_update.entity:

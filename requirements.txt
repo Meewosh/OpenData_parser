@@ -1,0 +1,9 @@
+Flask==2.3.1
+gtfs-realtime-bindings==1.0.0
+protobuf==4.23.2
+requests==2.25.1
+simplejson==3.17.6
+swagger-ui-py==22.7.13
+wget==3.2
+zipp==1.0.0
+gunicorn==21.2.0

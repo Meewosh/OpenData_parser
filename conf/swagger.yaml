@@ -168,3 +168,31 @@ paths:
                   type: string
                   format: uri
                   example: 'http://10.0.0.225:8080'    
+  /findMyVehicle:
+    get:
+      tags:
+        - findMyVehicle 
+      description: returns url to google maps to locate vehicle
+      operationId: findVehicle
+      parameters:
+        - in: query
+          name: latitude
+          description: latitude
+          schema:
+            type: double
+        - in: query
+          name: longitude
+          description: longitude
+          schema:
+            type: double
+      responses:
+        '200':
+          description: All the something
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+                  format: uri
+                  example: 'http://10.0.0.225:8080'   

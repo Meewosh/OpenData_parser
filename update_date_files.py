@@ -1,7 +1,7 @@
 import wget
 import zipfile
 import os
-
+import main
 
 def download_file(url, directory_name):
     filename = wget.download(url, out=directory_name)
@@ -27,10 +27,10 @@ def remove_file(directory_name, filename):
 #KRAKÓW
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 krakow_url_path_bus = 'https://gtfs.ztp.krakow.pl/GTFS_KRK_A.zip'
-krakow_data_path_bus = "/home/meewosh/Pulpit/OpenData_parser_develop/OpenData_parser_dev/data/Krakow/bus/"
+krakow_data_path_bus = main.home + "/data/Krakow/bus/"
 
 krakow_url_path_tram = 'https://gtfs.ztp.krakow.pl/GTFS_KRK_T.zip'
-krakow_data_path_tram = "/home/meewosh/Pulpit/OpenData_parser_develop/OpenData_parser_dev/data/Krakow/tram/"
+krakow_data_path_tram = main.home + "/data/Krakow/tram/"
 
 download_file(krakow_url_path_bus, krakow_data_path_bus)
 download_file(krakow_url_path_tram, krakow_data_path_tram)
@@ -41,7 +41,7 @@ download_file(krakow_url_path_tram, krakow_data_path_tram)
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 poznan_url_path_ = 'https://www.ztm.poznan.pl/pl/dla-deweloperow/getGTFSFile'
-poznan_data_path = "/home/meewosh/Pulpit/OpenData_parser_develop/OpenData_parser_dev/data/Poznan/"
+poznan_data_path = main.home + "/data/Poznan/"
 
 
 download_file(poznan_url_path_, poznan_data_path)

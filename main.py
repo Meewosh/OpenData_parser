@@ -1,6 +1,8 @@
 from flask import Flask, jsonify, request, redirect
 from swagger_ui import flask_api_doc
 import json
+import time
+import os
 import parser_Wroclaw
 import parser_Warszawa
 import parser_Gdansk
@@ -8,17 +10,23 @@ import parser_Karkow
 import parser_Poznan
 
 
+home = os.environ["HOME"]
 app = Flask(__name__)
 app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
+<<<<<<< HEAD
 flask_api_doc(app, config_path='/home/meewosh/Pulpit/OpenData_parser_develop/OpenData_parser_dev/conf/swagger.yaml', url_prefix='/api/doc', title='API doc')
+=======
+
+flask_api_doc(app, config_path= home + '/conf/swagger.yaml', url_prefix='/api/doc', title='API doc')
+
+>>>>>>> 52528bb (fixes)
 PYTHONIOENCODING="UTF-8"
 
 
 @app.route("/")
-def redirect_uri():
-    if __name__=='__main__':
-        return redirect("http://192.168.0.24:8000/api/doc", code = 302)
-    return redirect("http://62.21.49.198:5000/api/doc", code = 302)
+def api():
+    data = "OPEN DATA PARSER"
+    return data
 
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -94,6 +102,12 @@ def api_poznan():
     return jsonify(json)
 
 
+@app.route("/findMyVehicle", methods=["GET"])
+def api_find_my_vehicle():
+    latitude = request.args.get('latitude')
+    longitude = request.args.get('longitude')
+    redirect_url = "https://www.google.com/maps/search/?api=1&query=" + latitude +"%2C" + longitude
+    return redirect_url
 
 if __name__=='__main__':
     app.run(host='0.0.0.0', port=8000, debug=True)
