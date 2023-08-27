@@ -9,19 +9,12 @@ import parser_Karkow
 import parser_Poznan
 
 
-home = os.environ["HOME"]
+home = os.environ["TEST"]
 app = Flask(__name__)
 app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
 flask_api_doc(app, config_path=home + '/conf/swagger.yaml', url_prefix='/api/doc', title='API doc')
 
 PYTHONIOENCODING = "UTF-8"
-
-<<<<<<< HEAD
->>>>>>> 52528bb (fixes)
-PYTHONIOENCODING="UTF-8"
-=======
->>>>>>> 56622c8 (Warsaw API rewrite + snake case)
-
 
 @app.route("/")
 def api():
@@ -73,7 +66,7 @@ def api_wroclaw():
 def api_gdansk():
     limit = request.args.get('limit')
     line_number = request.args.get('lineNumber')
-    json_format = parser_Gdansk.dataParser(limit, line_number)
+    json_format = parser_Gdansk.data_parser(limit, line_number)
     return jsonify(json_format)
 
 
@@ -86,14 +79,9 @@ def api_krakow():
     limit = request.args.get('limit')
     line_number = request.args.get('lineNumber')
     type_number = request.args.get('type')
-<<<<<<< HEAD
-    json = parser_Karkow.dataParser(line_number, limit, type_number)
-    return jsonify(json)
-=======
-    json_format = parser_Karkow.get_records(line_number, limit, type_number)
-    return jsonify(json_format)
->>>>>>> 56622c8 (Warsaw API rewrite + snake case)
 
+    json_format = parser_Karkow.data_parser(line_number, limit, type_number)
+    return jsonify(json_format)
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 #POZNAŃ
@@ -103,13 +91,8 @@ def api_krakow():
 def api_poznan():
     limit = request.args.get('limit')
     line_number = request.args.get('lineNumber')
-<<<<<<< HEAD
-    json = parser_Poznan.dataParser(line_number, limit)
-    return jsonify(json)
-=======
-    json_format = parser_Poznan.get_records(line_number, limit)
+    json_format = parser_Poznan.data_parser(line_number, limit)
     return jsonify(json_format)
->>>>>>> 56622c8 (Warsaw API rewrite + snake case)
 
 
 @app.route("/findMyVehicle", methods=["GET"])

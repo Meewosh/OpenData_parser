@@ -1,5 +1,5 @@
 service_id,monday,tuesday,wednesday,thursday,friday,saturday,sunday,start_date,end_date
-service_2,0,0,0,0,0,1,0,20230819,20231117
-service_3,0,0,0,0,0,0,1,20230819,20231117
-service_1,1,1,1,1,0,0,0,20230819,20231117
-service_4,0,0,0,0,1,0,0,20230819,20231117
+service_4,0,0,0,0,1,0,0,20230825,20231123
+service_2,0,0,0,0,0,1,0,20230825,20231123
+service_3,0,0,0,0,0,0,1,20230825,20231123
+service_1,1,1,1,1,0,0,0,20230825,20231123

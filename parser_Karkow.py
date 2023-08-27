@@ -95,6 +95,6 @@ def request_loop_data_prase(line_number, limit, type_number):
     return records
 
 
-def dataParser(line_number, limit, type_number):
+def data_parser(line_number, limit, type_number):
     records = request_loop_data_prase(line_number, limit, type_number)
     return records

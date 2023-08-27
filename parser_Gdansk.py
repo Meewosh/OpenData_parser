@@ -21,7 +21,7 @@ def response_parse(response, iterator, keys, recordNumber):
     return record
 
 
-def dataParser(limit, lineNumber):
+def data_parser(limit, lineNumber):
     keys = ['generated', 'routeShortName', 'vehicleCode', 'delay', 'headsign',  'lat', 'lon']
     record = ""
     records = {}
