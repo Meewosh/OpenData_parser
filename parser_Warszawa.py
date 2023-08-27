@@ -2,7 +2,7 @@ import requests
 import urllib
 import json
 
-api_key = 'aeec556e-6dce-4697-80af-6814e1a40abc' # API key for authentication (personal)
+api_key = 'b2e1d923-55d7-48b4-872a-6ddcf3d34b25' # API key for authentication (personal)
 resource_id	=  'f2e5503e-927d-4ad3-9500-4ab9e55deb59'
 type = 0
 

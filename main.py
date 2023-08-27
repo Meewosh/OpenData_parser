@@ -9,7 +9,7 @@ import parser_Karkow
 import parser_Poznan
 
 
-home = os.environ["TEST"]
+home = os.environ["HOME"]
 app = Flask(__name__)
 app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
 flask_api_doc(app, config_path=home + '/conf/swagger.yaml', url_prefix='/api/doc', title='API doc')
