@@ -10,4 +10,4 @@ COPY . /app/
 RUN pip3 install -r /app/requirements.txt
 EXPOSE 8000
 RUN python update_date_files.py
-CMD gunicorn --bind 0.0.0.0:8000 wsgi:app --log-level DEBUG --timeout 0
+CMD gunicorn --bind 0.0.0.0:8000 wsgi:app --log-level DEBUG --timeout 300

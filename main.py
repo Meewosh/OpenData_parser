@@ -1,7 +1,6 @@
 from flask import Flask, jsonify, request, redirect
 from swagger_ui import flask_api_doc
 import json
-import time
 import os
 import parser_Wroclaw
 import parser_Warszawa
@@ -13,14 +12,15 @@ import parser_Poznan
 home = os.environ["HOME"]
 app = Flask(__name__)
 app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
+flask_api_doc(app, config_path=home + '/conf/swagger.yaml', url_prefix='/api/doc', title='API doc')
+
+PYTHONIOENCODING = "UTF-8"
+
 <<<<<<< HEAD
-flask_api_doc(app, config_path='/home/meewosh/Pulpit/OpenData_parser_develop/OpenData_parser_dev/conf/swagger.yaml', url_prefix='/api/doc', title='API doc')
-=======
-
-flask_api_doc(app, config_path= home + '/conf/swagger.yaml', url_prefix='/api/doc', title='API doc')
-
 >>>>>>> 52528bb (fixes)
 PYTHONIOENCODING="UTF-8"
+=======
+>>>>>>> 56622c8 (Warsaw API rewrite + snake case)
 
 
 @app.route("/")
@@ -30,55 +30,55 @@ def api():
 
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-#DATA_STRUCT
+# DATA_STRUCT
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 @app.route("/data", methods=["GET"])
 def api_data():
     with open("data_struct.json", "r") as json_file:
-        json_object = json.load(json_file)
-    return jsonify(json_object)
+        json_format = json.load(json_file)
+    return jsonify(json_format)
 
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-#WARSZAWA
+# WARSZAWA
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 @app.route("/warszawa", methods=["GET"])
 def api_warszawa():
     limit = request.args.get('limit')
     line_number = request.args.get('lineNumber')
-    type = request.args.get('type')
-    json = parser_Warszawa.dataParser(type, line_number, limit)
-    return jsonify(json)
+    type_number = request.args.get('type')
+    json_format = parser_Warszawa.data_parser(type_number, line_number, limit)
+    return jsonify(json_format)
 
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-#WROCLAW
+# WROCLAW
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 @app.route("/wroclaw", methods=["GET"])
 def api_wroclaw():
     limit = request.args.get('limit')
     line_number = request.args.get('lineNumber')
-    json = parser_Wroclaw.dataParser(limit, line_number)
-    return jsonify(json)
+    json_format = parser_Wroclaw.data_parser(limit, line_number)
+    return jsonify(json_format)
 
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-#GDAŃSK
+# GDAŃSK
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 @app.route("/gdansk", methods=["GET"])
 def api_gdansk():
     limit = request.args.get('limit')
     line_number = request.args.get('lineNumber')
-    json = parser_Gdansk.dataParser(limit, line_number)
-    return jsonify(json)
+    json_format = parser_Gdansk.dataParser(limit, line_number)
+    return jsonify(json_format)
 
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-#KRAKÓW
+# KRAKÓW
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 @app.route("/krakow", methods=["GET"])
@@ -86,8 +86,13 @@ def api_krakow():
     limit = request.args.get('limit')
     line_number = request.args.get('lineNumber')
     type_number = request.args.get('type')
+<<<<<<< HEAD
     json = parser_Karkow.dataParser(line_number, limit, type_number)
     return jsonify(json)
+=======
+    json_format = parser_Karkow.get_records(line_number, limit, type_number)
+    return jsonify(json_format)
+>>>>>>> 56622c8 (Warsaw API rewrite + snake case)
 
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -98,8 +103,13 @@ def api_krakow():
 def api_poznan():
     limit = request.args.get('limit')
     line_number = request.args.get('lineNumber')
+<<<<<<< HEAD
     json = parser_Poznan.dataParser(line_number, limit)
     return jsonify(json)
+=======
+    json_format = parser_Poznan.get_records(line_number, limit)
+    return jsonify(json_format)
+>>>>>>> 56622c8 (Warsaw API rewrite + snake case)
 
 
 @app.route("/findMyVehicle", methods=["GET"])
@@ -109,6 +119,8 @@ def api_find_my_vehicle():
     redirect_url = "https://www.google.com/maps/search/?api=1&query=" + latitude +"%2C" + longitude
     return redirect_url
 
+
 if __name__=='__main__':
     app.run(host='0.0.0.0', port=8000, debug=True)
     
+

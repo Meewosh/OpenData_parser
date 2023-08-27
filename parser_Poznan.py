@@ -36,14 +36,14 @@ def response_prase(vehicle, record_number, trips_update):
     with open(pathfile_trips, newline="") as csvfile_trips:
         trpis_csv = csv.DictReader(csvfile_trips)
         for row in trpis_csv:
-            if row["trip_id"] == vehicle.vehicle.trip.trip_id:
-                vehicle_heading = row["trip_headsign"]
+            if row['trip_id'] == vehicle.vehicle.trip.trip_id:
+                vehicle_heading = row['trip_headsign']
                 vehicle_route_id = row["\ufeffroute_id"]   
                 with open(pathfile_routes, newline="") as csvfile_route:
                     routes_csv = csv.DictReader(csvfile_route)     
                     for row_routes in routes_csv:
-                        if row_routes["\ufeffroute_id"] == vehicle_route_id:
-                            vehicle_id = row_routes["route_short_name"]
+                        if row_routes['\ufeffroute_id'] == vehicle_route_id:
+                            vehicle_id = row_routes['route_short_name']
                             break
                 record = {
                     record_number:{
@@ -59,7 +59,7 @@ def response_prase(vehicle, record_number, trips_update):
                 return record
         
     record = {
-        record_number:{
+        record_number: {
             "lastUpdate": "No data",
             "lineNumber": "No data",
             "sideNumber": "No data",
@@ -72,8 +72,7 @@ def response_prase(vehicle, record_number, trips_update):
     return record
 
 
-
-def dataParser(line_number, limit):
+def get_records(line_number, limit):
     record_number = 0
     records = {}
 
@@ -84,10 +83,10 @@ def dataParser(line_number, limit):
 
     for vehicle in vehicle_positions.entity:
         record = response_prase(vehicle, record_number, trips_update)
-        if line_number == None or record[record_number]['lineNumber'] == line_number:
+        if line_number is None or record[record_number]['lineNumber'] == line_number:
             records.update(record)
             record_number = record_number + 1
-            if limit != None:
+            if limit is not None:
                 if int(limit) == len(records):
                     return records 
     return records

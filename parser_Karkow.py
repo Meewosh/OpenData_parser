@@ -58,7 +58,7 @@ def response_prase(vehicle, record_number, type_number, trips_update):
                 return record
         
     record = {
-        record_number:{
+        record_number: {
             "lastUpdate": "No data",
             "lineNumber": "No data",
             "sideNumber": "No data",
@@ -69,7 +69,6 @@ def response_prase(vehicle, record_number, type_number, trips_update):
         }
     }
     return record
-
 
 
 def request_loop_data_prase(line_number, limit, type_number):
@@ -87,10 +86,10 @@ def request_loop_data_prase(line_number, limit, type_number):
 
     for vehicle in vehicle_positions.entity:
         record = response_prase(vehicle, record_number, type_number, trips_update)
-        if line_number == None or record[record_number]['lineNumber'] == line_number:
+        if line_number is None or record[record_number]['lineNumber'] == line_number:
             records.update(record)
             record_number = record_number + 1
-            if limit != None:
+            if limit is not None:
                 if int(limit) == len(records):
                     return records 
     return records
